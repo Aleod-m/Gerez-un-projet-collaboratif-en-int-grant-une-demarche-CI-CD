@@ -1,0 +1,66 @@
+name: 'TEST'
+on: 
+  push:
+    branches: main
+  pull_request:
+    branches: main 
+
+permissions:
+  contents: read
+
+jobs:
+  test-back:
+    name: Test the back-end code.
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'back'
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '11'
+          cache: 'maven'
+          cache-dependency-path: 'back/pom.xml'
+
+      - run: |
+          mvn test
+
+      - uses: actions/upload-artifact@v4
+        if: success() || failure()
+        with:
+          name: back-results
+          path: back/target/surefire-reports/TEST-*.xml
+
+  test-front:
+    name: Test the front-end code.
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'front'
+
+    strategy:
+      matrix:
+        node-version: [ 22 ]
+
+    steps:
+      - uses: actions/checkout@v6
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - run: |
+          npm ci
+          npm run test:ci
+
+      - uses: actions/upload-artifact@v4
+        if: success() || failure()
+        with:
+          name: front-results
+          path: front/TESTS-*.xml
+
