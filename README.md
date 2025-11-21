@@ -1,5 +1,7 @@
 # BobApp
 
+[![TEST](https://github.com/Aleod-m/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/actions/workflows/test.yml/badge.svg)](https://github.com/Aleod-m/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/actions/workflows/test.yml)
+
 Clone project:
 
 > git clone XXXXX
