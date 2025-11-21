@@ -5,24 +5,29 @@ on:
     types:
       - completed
 
+permissions:
+  contents: read
+  actions: read
+  checks: write
+
 jobs:
   report:
     runs-on: ubuntu-latest
     steps:
-      - name: Test Report
-        uses: phoenix-actions/test-reporting@v8
-        id: back-report               # Set ID reference for step
+      - name: Back End Test Report
+        uses: dorny/test-reporter@v2
+        id: back-report
         with:
-          name: Back-End Tests            # Name of the check run which will be created
+          name: Back-End Tests
           artifact: back-results
           path: '*.xml'
-          reporter: java-junit        # Format of test results
+          reporter: java-junit
 
-      - name: Test Report
-        uses: phoenix-actions/test-reporting@v8
-        id: front-report               # Set ID reference for step
+      - name: Front End Test Report
+        uses: dorny/test-reporter@v2
+        id: front-report
         with:
-          name: Back-End Tests            # Name of the check run which will be created
+          name: Back-End Tests
           artifact: front-results
           path: '*.xml'
-          reporter: jest-junit        # Format of test results
+          reporter: java-junit
