@@ -16,6 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
         <sonar.organization>aleod-m</sonar.organization>
+        <sonar.projectName>bobapp-back</sonar.projectName>
 	</properties>
 	<dependencies>
 		<dependency>
