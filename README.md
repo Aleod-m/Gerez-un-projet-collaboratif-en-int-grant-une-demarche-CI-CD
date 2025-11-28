@@ -1,5 +1,7 @@
 # BobApp
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Aleod-m_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Aleod-m_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD)
+
 [![TEST](https://github.com/Aleod-m/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/actions/workflows/test.yml/badge.svg)](https://github.com/Aleod-m/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD/actions/workflows/test.yml)
 
 Clone project:
